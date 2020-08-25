@@ -187,7 +187,7 @@ namespace QobuzDownloaderX
             artSizeSelect.SelectedIndex = Settings.Default.savedArtSize;
             filenameTempSelect.SelectedIndex = Settings.Default.savedFilenameTemplate;
             fileNameTemplateString = Settings.Default.savedFilenameTemplateString;
-            MaxLength = Settings.Default.savedMaxLength;
+            MaxLength = 110;
 
             customFormatIDTextbox.Text = formatIdString;
 
@@ -3780,6 +3780,7 @@ namespace QobuzDownloaderX
                     albumArtist = (string)joTrackResponse["album"]["artist"]["name"]; albumArtist = DecodeEncodedNonAsciiCharacters(albumArtist);
                     albumArtistPath = GetSafeFilename(albumArtist);
                     albumArtistTextBox.Invoke(new Action(() => albumArtistTextBox.Text = albumArtist));
+                    trackGrouping = (string)joTrackResponse["work"];
 
                     try
                     {
@@ -3942,6 +3943,8 @@ namespace QobuzDownloaderX
                     }
 
                     // Create directories
+                    albumArtistPath = albumArtistPath.Trim();
+                    albumNamePath = albumNamePath.Trim();
                     string[] path1 = { loc, albumArtistPath };
                     path1Full = Path.Combine(path1);
                     string[] path2 = { loc, albumArtistPath, albumNamePath };
@@ -4240,6 +4243,8 @@ namespace QobuzDownloaderX
                                 // For custom / troublesome tags.
                                 var custom = (TagLib.Ogg.XiphComment)tfile.GetTag(TagLib.TagTypes.Xiph);
 
+                                tfile.Tag.Grouping = trackGrouping;
+
                                 // Saving cover art to file(s)
                                 if (imageCheckbox.Checked == true)
                                 {
@@ -4298,7 +4303,7 @@ namespace QobuzDownloaderX
                                 if (trackNumberCheckbox.Checked == true) { tfile.Tag.Track = Convert.ToUInt32(trackNumber); }
 
                                 // Disc Number tag
-                                if (discNumberCheckbox.Checked == true) { tfile.Tag.Disc = Convert.ToUInt32(discNumber); }
+                                if (discNumberCheckbox.Checked == true && discTotal > 1) { tfile.Tag.Disc = Convert.ToUInt32(discNumber); }
 
                                 // Total Discs tag
                                 if (discTotalCheckbox.Checked == true) { tfile.Tag.DiscCount = Convert.ToUInt32(discTotal); }
@@ -5532,7 +5537,7 @@ namespace QobuzDownloaderX
         // For converting illegal filename characters to an underscore.
         public string GetSafeFilename(string filename)
         {
-            return string.Join("_", filename.Split(Path.GetInvalidFileNameChars()));
+            return string.Join("-", filename.Split(Path.GetInvalidFileNameChars()));
         }
 
         private void enableBtnsButton_Click(object sender, EventArgs e)
