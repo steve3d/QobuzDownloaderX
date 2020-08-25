@@ -57,6 +57,7 @@
             // panel1
             // 
             this.panel1.BackgroundImage = global::QobuzDownloaderX.Properties.Resources.login_frame;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.aboutLabel);
             this.panel1.Controls.Add(this.disableLogin);
             this.panel1.Controls.Add(this.verNumLabel2);
