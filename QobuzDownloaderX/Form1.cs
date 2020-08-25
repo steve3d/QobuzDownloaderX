@@ -99,6 +99,7 @@ namespace QobuzDownloaderX
         public string frontCoverImg { get; set; }
         public string frontCoverImgBox { get; set; }
         public string goodiesPDF { get; set; }
+        public string trackGrouping { get; set; }
 
         // Info strings for creating paths
         public string albumArtistPath { get; set; }
@@ -118,7 +119,7 @@ namespace QobuzDownloaderX
         private void Form1_Load(object sender, EventArgs e)
         {
             // Set main form size on launch and bring to center.
-            this.Height = 533;
+            this.Height = LogicalToDeviceUnits(533);
             this.CenterToScreen();
 
             // Welcome the user after successful login.
@@ -1501,6 +1502,7 @@ namespace QobuzDownloaderX
                             albumArtist = (string)joTrackResponse["album"]["artist"]["name"]; albumArtist = DecodeEncodedNonAsciiCharacters(albumArtist);
                             albumArtistPath = GetSafeFilename(albumArtist);
                             albumArtistTextBox.Invoke(new Action(() => albumArtistTextBox.Text = albumArtist));
+                            trackGrouping = (string)joTrackResponse["work"];
 
                             try
                             {
@@ -2003,6 +2005,9 @@ namespace QobuzDownloaderX
                                             }
                                         }
 
+                                        // save grouping
+                                        tfile.Tag.Grouping = trackGrouping;
+
                                         // Album Title tag
                                         if (albumCheckbox.Checked == true) { tfile.Tag.Album = albumName; }
 
@@ -2025,7 +2030,7 @@ namespace QobuzDownloaderX
                                         if (trackNumberCheckbox.Checked == true) { tfile.Tag.Track = Convert.ToUInt32(trackNumber); }
 
                                         // Disc Number tag
-                                        if (discNumberCheckbox.Checked == true) { tfile.Tag.Disc = Convert.ToUInt32(discNumber); }
+                                        if (discNumberCheckbox.Checked == true && discTotal > 1) { tfile.Tag.Disc = Convert.ToUInt32(discNumber); }
 
                                         // Total Discs tag
                                         if (discTotalCheckbox.Checked == true) { tfile.Tag.DiscCount = Convert.ToUInt32(discTotal); }
@@ -5087,16 +5092,16 @@ namespace QobuzDownloaderX
         #region Tagging Options
         private void tagsLabel_Click(object sender, EventArgs e)
         {
-            if (this.Height == 533)
+            if (this.Height == LogicalToDeviceUnits(533))
             {
                 //New Height
-                this.Height = 632;
+                this.Height = LogicalToDeviceUnits(632);
                 tagsLabel.Text = "🠉 Choose which tags to save (click me) 🠉";
             }
-            else if (this.Height == 632)
+            else if (this.Height == LogicalToDeviceUnits(632))
             {
                 //New Height
-                this.Height = 533;
+                this.Height = LogicalToDeviceUnits(533);
                 tagsLabel.Text = "🠋 Choose which tags to save (click me) 🠋";
             }
 

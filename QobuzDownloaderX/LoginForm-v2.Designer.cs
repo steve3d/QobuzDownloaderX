@@ -146,7 +146,6 @@
             this.userAuthTokenTextbox.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userAuthTokenTextbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(92)))), ((int)(((byte)(102)))));
             this.userAuthTokenTextbox.Location = new System.Drawing.Point(12, 255);
-            this.userAuthTokenTextbox.Multiline = true;
             this.userAuthTokenTextbox.Name = "userAuthTokenTextbox";
             this.userAuthTokenTextbox.Size = new System.Drawing.Size(237, 23);
             this.userAuthTokenTextbox.TabIndex = 35;
@@ -193,7 +192,6 @@
             this.emailTextbox.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailTextbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(92)))), ((int)(((byte)(102)))));
             this.emailTextbox.Location = new System.Drawing.Point(12, 199);
-            this.emailTextbox.Multiline = true;
             this.emailTextbox.Name = "emailTextbox";
             this.emailTextbox.Size = new System.Drawing.Size(258, 23);
             this.emailTextbox.TabIndex = 7;
@@ -208,7 +206,6 @@
             this.passwordTextbox.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordTextbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(92)))), ((int)(((byte)(102)))));
             this.passwordTextbox.Location = new System.Drawing.Point(12, 255);
-            this.passwordTextbox.Multiline = true;
             this.passwordTextbox.Name = "passwordTextbox";
             this.passwordTextbox.Size = new System.Drawing.Size(237, 23);
             this.passwordTextbox.TabIndex = 8;
@@ -276,7 +273,6 @@
             this.userIdTextbox.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userIdTextbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(92)))), ((int)(((byte)(102)))));
             this.userIdTextbox.Location = new System.Drawing.Point(12, 199);
-            this.userIdTextbox.Multiline = true;
             this.userIdTextbox.Name = "userIdTextbox";
             this.userIdTextbox.Size = new System.Drawing.Size(258, 23);
             this.userIdTextbox.TabIndex = 9;

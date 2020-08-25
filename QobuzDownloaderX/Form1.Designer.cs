@@ -338,6 +338,7 @@
             this.albumArtPicBox.Size = new System.Drawing.Size(150, 150);
             this.albumArtPicBox.TabIndex = 39;
             this.albumArtPicBox.TabStop = false;
+            this.albumArtPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             // 
             // logoBox
             // 
@@ -919,6 +920,7 @@
             this.profilePictureBox.Size = new System.Drawing.Size(20, 20);
             this.profilePictureBox.TabIndex = 94;
             this.profilePictureBox.TabStop = false;
+            this.profilePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             // 
             // logoutLabel
             // 
