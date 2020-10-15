@@ -3794,7 +3794,7 @@ namespace QobuzDownloaderX
                     advisory = (string)joTrackResponse["parental_warning"];
 
                     albumName = (string)joTrackResponse["album"]["title"]; albumName = DecodeEncodedNonAsciiCharacters(albumName);
-                    albumNamePath = GetSafeFilename(albumName);
+                    albumNamePath = GetSafeFilename(albumName).Trim('.');
                     albumTextBox.Invoke(new Action(() => albumTextBox.Text = albumName));
 
                     trackName = (string)joTrackResponse["title"]; trackName = trackName.Trim(); trackName = DecodeEncodedNonAsciiCharacters(trackName);
